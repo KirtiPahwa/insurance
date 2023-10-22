@@ -1,5 +1,5 @@
-import Register from './Component/Register/Register';
- import Login from './Component/Login/Login';
+import Register from "./Component/Register/Register";
+import Login from "./Component/Login/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './Component/Home/Home';
 import { Policy } from './Component/Policy/Policy';
