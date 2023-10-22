@@ -23,7 +23,7 @@ const Cart = () => {
                 >
                     Your cart
                 </h1>
-                {localStorage.getItem("home") == null ? (
+                {localStorage.getItem("home") != null ? (
                     <div className="col-lg-12">
                         <div
                             className="feature wow fadeInUp"
@@ -50,10 +50,10 @@ const Cart = () => {
                         </div>
                     </div>
                 ) : (
-                    <h2>Empty</h2>
+                    <h2></h2>
                 )}
 
-                {localStorage.getItem("health") == null ? (
+                {localStorage.getItem("health") != null ? (
                     <div className="col-lg-12">
                         <div
                             className="feature wow fadeInUp"
@@ -80,9 +80,9 @@ const Cart = () => {
                         </div>
                     </div>
                 ) : (
-                    <h2>Empty</h2>
+                    <h2></h2>
                 )}
-                {localStorage.getItem("vehicle") == null ? (
+                {localStorage.getItem("vehicle") != null ? (
                     <div className="col-lg-12">
                         <div
                             className="feature wow fadeInUp"
@@ -109,7 +109,7 @@ const Cart = () => {
                         </div>
                     </div>
                 ) : (
-                    <h2>Empty</h2>
+                    <h2></h2>
                 )}
 
                 <button type="submit" onClick={handleClaim}>
