@@ -9,8 +9,13 @@ export const Policy = () => {
     console.log(type);
 
     const addToCart=()=>{
-        // if(type=='health')
-        // localStorage.setItem("health")
+        if(type=='health')
+        localStorage.setItem("health","yes");
+    else if(type=='home')
+    localStorage.setItem("home","yes");
+else if(type=='vehicle')
+localStorage.setItem("vehicle","yes");
+
     }
 
   return (

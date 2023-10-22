@@ -18,6 +18,7 @@ const Home = () => {
 						<nav className="member-navigation pull-right">
 							<Link to="/register"><i className="fa fa-user"></i> Register</Link>
 							<Link to="/login"><i className="fa fa-lock"></i> Login</Link>
+							<Link to="/cart"><i className="fa fa-lock"></i> Cart</Link>
 							
 						</nav> 
 					</div> 
