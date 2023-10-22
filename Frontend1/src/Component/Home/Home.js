@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../css/style.css";
 import "../css/animate.css";
 import logo from "../images/logo-icon.png";
-import animation1 from "../dummy/server.jpg";
+import mainPic from "../images/mainPic.jpg";
 import logoFooter from "../images/logo-footer.png";
 const Home = () => {
     return (
@@ -19,7 +19,7 @@ const Home = () => {
                             }}
                         >
                             <Link to="tel:80049123441" style={{ width: "80%" }}>
-                                Call Us: (800) 49123441
+                                jashan@gmail.coms
                             </Link>
 
                             <nav
@@ -31,6 +31,9 @@ const Home = () => {
                                 </Link>
                                 <Link to="/login">
                                     <i className="fa fa-lock"></i> Login
+                                </Link>
+                                <Link to="/cart">
+                                    <i className="fa fa-lock"></i> Cart
                                 </Link>
                             </nav>
                         </div>
@@ -49,17 +52,12 @@ const Home = () => {
                                 className="branding pull-left"
                                 style={{ margin: "10px", width: "60%" }}
                             >
-                                <img
-                                    src={logo}
-                                    alt="Site title"
-                                    className="logo-icon"
-                                    style={{ margin: "10px" }}
-                                />
+                               
                                 <h1 className="site-title">
-                                    Company <span>Name</span>
+                                    Angel <span>Insurance</span>
                                 </h1>
                                 <h2 className="site-description">
-                                    Tagline goes here
+                                    Best insurance policies
                                 </h2>
                             </Link>
 
@@ -71,17 +69,15 @@ const Home = () => {
                                     <i className="fa fa-bars"></i>
                                 </button>
                                 <ul className="menu">
+                                   
                                     <li className="menu-item">
-                                        <Link to="news.html">News</Link>
+                                        <Link to="/">About Us</Link>
                                     </li>
                                     <li className="menu-item">
-                                        <Link to="about-us.html">About Us</Link>
+                                        <Link to="/">Services</Link>
                                     </li>
                                     <li className="menu-item">
-                                        <Link to="services.html">Services</Link>
-                                    </li>
-                                    <li className="menu-item">
-                                        <Link to="contact.html">Contact</Link>
+                                        <Link to="/">Contact</Link>
                                     </li>
                                 </ul>
                             </nav>
@@ -90,103 +86,20 @@ const Home = () => {
                 </header>
 
                 <main className="content" style={{margin: "20px"}}>
-                    {/* <div className="slider">
-                        <ul className="slides">
-                            <li>
-                                <div className="container">
-                                    <img src={animation1} alt="" />
-                                    <div className="slide-caption">
-                                        <h2 className="slide-title">
-                                            Duis aute reprehenderit
-                                        </h2>
-                                        <small className="slide-subtitle">
-                                            Nemo enom ipsam voluptatem voluptas
-                                        </small>
-                                        <div className="slide-summary">
-                                            <p>
-                                                Lorem ipsum dolor sit amet,
-                                                consectetur adipisicing elit.
-                                                Necessitatibus, illum laborum
-                                                odit est quibusdam, molestias
-                                                quaerat qui, eveniet voluptate
-                                                debitis, earum dolorem. Fuga
-                                                maxime fugit excepturi, saepe
-                                                fugiat quisquam quia!
-                                            </p>
-                                        </div>
-                                        <Link to="" className="button">
-                                            Read More
-                                        </Link>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="container">
-                                    <img src={animation1} alt="" />
-                                    <div className="slide-caption">
-                                        <h2 className="slide-title">
-                                            Rerehenderit aute duis consetetur
-                                        </h2>
-                                        <small className="slide-subtitle">
-                                            Ipsam voluptas nemo enim
-                                        </small>
-                                        <div className="slide-summary">
-                                            <p>
-                                                Perspiciatis quo, aspernatur
-                                                similique? Cumque quidem ipsa
-                                                et. Nobis officia error nam
-                                                veritatis culpa ut ullam maxime
-                                                in ad hic, earum repudiandae?
-                                            </p>
-                                        </div>
-                                        <Link to="" className="button">
-                                            Read More
-                                        </Link>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="container">
-                                    <img src={animation1} alt="" />
-                                    <div className="slide-caption">
-                                        <h2 className="slide-title">
-                                            Aliqquam nibh quam iaculis
-                                        </h2>
-                                        <small className="slide-subtitle">
-                                            Augue dui fringilla ipsum hendrerit
-                                            felis accumsan
-                                        </small>
-                                        <div className="slide-summary">
-                                            <p>
-                                                Sapiente porro, laudantium
-                                                consectetur doloremque.
-                                                Explicabo, esse, expedita. Animi
-                                                dolorum aliquid nihil
-                                                necessitatibus itaque quis
-                                                architecto, fuga rerum.
-                                            </p>
-                                        </div>
-                                        <Link to="" className="button">
-                                            Read More
-                                        </Link>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div> */}
                     <div className="container" style={{display: "flex", flexDirection: "row-reverse"}}>
-                        <img src={animation1} alt="" />
+                        <img src={mainPic} height="400px"
+                        alt="" />
                         <div className="slide-caption">
                             <h2 className="slide-title"
 							style={{color: "#152559", fontSize: "50px", fontWeight: "bold"}}
 							>
-                                Duis aute reprehenderit
+                               Angel Insurance
                             </h2>
                             <small className="slide-subtitle"
 							style={{color: "#01a6d4", fontSize: "30px", fontWeight: "bold"}}
 							>
 								
-                                Nemo enom ipsam voluptatem voluptas
+                              Best Insurance company
                             </small>
                             <div className="slide-summary">
                                 <p>
@@ -212,7 +125,7 @@ const Home = () => {
                                         <div className="feature-title">
                                             <i className="icon-customer-service"></i>
                                             <h2 className="title">
-                                                Customer Services
+                                                Health Service
                                             </h2>
                                             <small className="subtitle">
                                                 Nulla eros odio dolor
@@ -242,7 +155,7 @@ const Home = () => {
                                         <div className="feature-title">
                                             <i className="icon-server-lock"></i>
                                             <h2 className="title">
-                                                Customer Services
+                                                Home Services
                                             </h2>
                                             <small className="subtitle">
                                                 Nulla eros odio dolor
@@ -272,7 +185,7 @@ const Home = () => {
                                         <div className="feature-title">
                                             <i className="icon-bar-chart-up"></i>
                                             <h2 className="title">
-                                                Customer Services
+                                                Vehicle Services
                                             </h2>
                                             <small className="subtitle">
                                                 Nulla eros odio dolor
@@ -576,14 +489,10 @@ const Home = () => {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className=" branding">
-                                    <img
-                                        src={logoFooter}
-                                        alt="Site title"
-                                        className="logo-icon"
-                                    />
+                                   
                                     <h1 className="site-title">
                                         <Link to="#">
-                                            Company <span>Name</span>
+                                            Angel <span>Insurance</span>
                                         </Link>
                                     </h1>
                                     <h2 className="site-description">
@@ -592,33 +501,19 @@ const Home = () => {
                                 </div>
 
                                 <p className="copy">
-                                    Copyright 2014 Company name. designed by
+                                    Copyright 2023 Company name. designed by
                                     Themezy. All rights reserved
                                 </p>
                             </div>
 
                             <div className="col-md-6 align-right">
                                 <nav className="footer-navigation">
-                                    <Link to="#">News</Link>
                                     <Link to="#">About us</Link>
                                     <Link to="#">Services</Link>
                                     <Link to="#">Contact</Link>
                                 </nav>
 
-                                <div className="social-links">
-                                    <Link to="#" className="facebook">
-                                        <i className="fa fa-facebook"></i>
-                                    </Link>
-                                    <Link to="#" className="twitter">
-                                        <i className="fa fa-twitter"></i>
-                                    </Link>
-                                    <Link to="#" className="google-plus">
-                                        <i className="fa fa-google-plus"></i>
-                                    </Link>
-                                    <Link to="#" className="pinterest">
-                                        <i className="fa fa-pinterest"></i>
-                                    </Link>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
