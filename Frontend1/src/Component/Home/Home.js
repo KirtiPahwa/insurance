@@ -185,6 +185,7 @@ const Home = () => {
                             <small className="slide-subtitle"
 							style={{color: "#01a6d4", fontSize: "30px", fontWeight: "bold"}}
 							>
+								
                                 Nemo enom ipsam voluptatem voluptas
                             </small>
                             <div className="slide-summary">
