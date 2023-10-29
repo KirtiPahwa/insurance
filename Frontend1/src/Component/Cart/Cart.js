@@ -31,7 +31,7 @@ const Cart = () => {
                         >
                             <div className="feature-title">
                                 <i className="icon-bar-chart-up"></i>
-                                <h2 className="title">Customer Services</h2>
+                                <h2 className="title">Home Services</h2>
                                 <small className="subtitle">
                                     Nulla eros odio dolor
                                 </small>
@@ -61,7 +61,7 @@ const Cart = () => {
                         >
                             <div className="feature-title">
                                 <i className="icon-bar-chart-up"></i>
-                                <h2 className="title">Customer Services</h2>
+                                <h2 className="title">Health Services</h2>
                                 <small className="subtitle">
                                     Nulla eros odio dolor
                                 </small>
@@ -90,7 +90,7 @@ const Cart = () => {
                         >
                             <div className="feature-title">
                                 <i className="icon-bar-chart-up"></i>
-                                <h2 className="title">Customer Services</h2>
+                                <h2 className="title">Vehicle Services</h2>
                                 <small className="subtitle">
                                     Nulla eros odio dolor
                                 </small>

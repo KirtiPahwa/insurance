@@ -1,10 +1,13 @@
 import React from 'react'
 import '../css/style.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import logo from "../images/logo-icon.png";
+import Navbar from '../Navbar/Navbar';
 
 
 export const Policy = () => {
+    const navigate=useNavigate();
+
     const {type}=useParams();
     console.log(type);
 
@@ -16,89 +19,105 @@ export const Policy = () => {
 else if(type=='vehicle')
 localStorage.setItem("vehicle","yes");
 
+navigate("/cart")
+
     }
 
   return (
     <>
-    <header className="site-header">
-                    <div className="top-header">
+  <Navbar/>
+            <main style={{margin:'100px auto', width:'500px'}} >
+            {type == 'home' ? (
+                    <div className="col-lg-12">
                         <div
-                            className="container"
-                            style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                            }}
+                            className="feature wow fadeInUp"
+                            data-wow-delay=".4s"
                         >
-                            <Link to="tel:80049123441" style={{ width: "80%" }}>
-                                jashan@gmail.coms
-                            </Link>
-
-                            <nav
-                                className="member-navigation pull-right"
-                                style={{ width: "20%" }}
-                            >
-                                <Link to="/register">
-                                    <i className="fa fa-user"></i> Register
-                                </Link>
-                                <Link to="/login">
-                                    <i className="fa fa-lock"></i> Login
-                                </Link>
-                                <Link to="/cart">
-                                    <i className="fa fa-lock"></i> Cart
-                                </Link>
-                            </nav>
+                            <div className="feature-title">
+                                <i className="icon-bar-chart-up"></i>
+                                <h2 className="title">Customer Services</h2>
+                                <small className="subtitle">
+                                    Nulla eros odio dolor
+                                </small>
+                            </div>
+                            <div className="feature-summary">
+                                <p>
+                                    Chocolate caramels unerdwear.com lemon
+                                    drops. Powder chupa chups pastry macaroon
+                                    wafer chocolate cake sweet roll croissant
+                                    jelly
+                                </p>
+                            </div>
+                            {/* <Link to="/policy/vehicle" className="button">
+                                    More info
+                                </Link> */}
                         </div>
                     </div>
+                ) : (
+                    <h2></h2>
+                )}
 
-                    <div className="bottom-header" style={{ width: "100%" }}>
+                {type=="health"? (
+                    <div className="col-lg-12">
                         <div
-                            className="container"
-                            style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                            }}
+                            className="feature wow fadeInUp"
+                            data-wow-delay=".4s"
                         >
-                            <Link
-                                to="index.html"
-                                className="branding pull-left"
-                                style={{ margin: "10px", width: "60%" }}
-                            >
-                               
-                                <h1 className="site-title">
-                                    Angel <span>Insurance</span>
-                                </h1>
-                                <h2 className="site-description">
-                                    Best insurance policies
-                                </h2>
-                            </Link>
-
-                            <nav
-                                className="main-navigation pull-right"
-                                style={{ width: "40%" }}
-                            >
-                                <button type="button" className="menu-toggle">
-                                    <i className="fa fa-bars"></i>
-                                </button>
-                                <ul className="menu">
-                                   
-                                    <li className="menu-item">
-                                        <Link to="/">About Us</Link>
-                                    </li>
-                                    <li className="menu-item">
-                                        <Link to="/">Services</Link>
-                                    </li>
-                                    <li className="menu-item">
-                                        <Link to="/">Contact</Link>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <div className="feature-title">
+                                <i className="icon-bar-chart-up"></i>
+                                <h2 className="title">Customer Services</h2>
+                                <small className="subtitle">
+                                    Nulla eros odio dolor
+                                </small>
+                            </div>
+                            <div className="feature-summary">
+                                <p>
+                                    Chocolate caramels unerdwear.com lemon
+                                    drops. Powder chupa chups pastry macaroon
+                                    wafer chocolate cake sweet roll croissant
+                                    jelly
+                                </p>
+                            </div>
+                            {/* <Link to="/policy/vehicle" className="button">
+                                More info
+                            </Link> */}
                         </div>
                     </div>
-                </header>
-            <main>
-                <div className="policyDiv">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque quis, quia rerum quisquam aliquam neque, eius tenetur provident tempora ipsam veritatis voluptatem porro temporibus commodi cumque iusto quam ex quasi!
-                </div><br/> <button type='button' onClick={addToCart}>Add to Cart</button>
+                ) : (
+                    <h2></h2>
+                )}
+                {type=="vehicle" ? (
+                    <div className="col-lg-12">
+                        <div
+                            className="feature wow fadeInUp"
+                            data-wow-delay=".4s"
+                        >
+                            <div className="feature-title">
+                                <i className="icon-bar-chart-up"></i>
+                                <h2 className="title">Customer Services</h2>
+                                <small className="subtitle">
+                                    Nulla eros odio dolor
+                                </small>
+                            </div>
+                            <div className="feature-summary">
+                                <p>
+                                    Chocolate caramels unerdwear.com lemon
+                                    drops. Powder chupa chups pastry macaroon
+                                    wafer chocolate cake sweet roll croissant
+                                    jelly
+                                </p>
+                            </div>
+                            {/* <Link to="/policy/vehicle" className="button">
+                                More info
+                            </Link> */}
+                        </div>
+                    </div>
+                ) : (
+                    <h2></h2>
+                )}
+
+            
+               <button type='button' onClick={addToCart}>Add to Cart</button>
             </main>
     </>
   )

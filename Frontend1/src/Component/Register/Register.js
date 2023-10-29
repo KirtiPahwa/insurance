@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  useEffect(() => {
+    if(localStorage.getItem("user")){
+      navigate("/");
+      window.location.reload(false);
+      ;}
+  }, [])
   const navigate=useNavigate();
   const [formData, setFormData] = useState({
     email: '',
@@ -26,14 +32,15 @@ const Register = () => {
       body: JSON.stringify(formData),
     });
     const json = await response.json();
-console.log(json.user);
-console.log(json.user._id);
-    if (!json.success) {
-      localStorage.setItem("user", json.user._id);
+    const {success,error}=json;
+console.log(json);
+    if (success==false ) {
       console.log(json.success);
+      alert(json.error)
     } else {
+      // localStorage.setItem("user", json.user._id);
       alert("Signed up successfully");
-      navigate("/");
+      navigate("/login");
     }
 }catch(error){
   console.log(error);
@@ -73,7 +80,8 @@ console.log(json.user._id);
           type="number"
           name="mobileNumber"
           required
-          maxLength={10}
+          max={9999999999}
+          min={1000000000}
           placeholder="Mobile Number"
           value={formData.mobileNumber}
           onChange={handleChange}

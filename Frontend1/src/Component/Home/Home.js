@@ -5,85 +5,12 @@ import "../css/animate.css";
 import logo from "../images/logo-icon.png";
 import mainPic from "../images/mainPic.jpg";
 import logoFooter from "../images/logo-footer.png";
+import Navbar from "../Navbar/Navbar";
 const Home = () => {
     return (
         <>
             <div id="site-content">
-                <header className="site-header">
-                    <div className="top-header">
-                        <div
-                            className="container"
-                            style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                            }}
-                        >
-                            <Link to="tel:80049123441" style={{ width: "80%" }}>
-                                jashan@gmail.coms
-                            </Link>
-
-                            <nav
-                                className="member-navigation pull-right"
-                                style={{ width: "20%" }}
-                            >
-                                <Link to="/register">
-                                    <i className="fa fa-user"></i> Register
-                                </Link>
-                                <Link to="/login">
-                                    <i className="fa fa-lock"></i> Login
-                                </Link>
-                                <Link to="/cart">
-                                    <i className="fa fa-lock"></i> Cart
-                                </Link>
-                            </nav>
-                        </div>
-                    </div>
-
-                    <div className="bottom-header" style={{ width: "100%" }}>
-                        <div
-                            className="container"
-                            style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                            }}
-                        >
-                            <Link
-                                to="index.html"
-                                className="branding pull-left"
-                                style={{ margin: "10px", width: "60%" }}
-                            >
-                               
-                                <h1 className="site-title">
-                                    Angel <span>Insurance</span>
-                                </h1>
-                                <h2 className="site-description">
-                                    Best insurance policies
-                                </h2>
-                            </Link>
-
-                            <nav
-                                className="main-navigation pull-right"
-                                style={{ width: "40%" }}
-                            >
-                                <button type="button" className="menu-toggle">
-                                    <i className="fa fa-bars"></i>
-                                </button>
-                                <ul className="menu">
-                                   
-                                    <li className="menu-item">
-                                        <Link to="/">About Us</Link>
-                                    </li>
-                                    <li className="menu-item">
-                                        <Link to="/">Services</Link>
-                                    </li>
-                                    <li className="menu-item">
-                                        <Link to="/">Contact</Link>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </header>
+               <Navbar/>
 
                 <main className="content" style={{margin: "20px"}}>
                     <div className="container" style={{display: "flex", flexDirection: "row-reverse"}}>
@@ -111,7 +38,7 @@ const Home = () => {
                                     saepe fugiat quisquam quia!
                                 </p>
                             </div>
-                            <Link to="" className="button">
+                            <Link to="/" className="button">
                                 Read More
                             </Link>
                         </div>

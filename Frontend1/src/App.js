@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './Component/Home/Home';
 import { Policy } from './Component/Policy/Policy';
 import Cart from './Component/Cart/Cart';
+import Dashboard from "./Component/Dashboard/Dashboard";
 function App() {
   return (
     <div className="App">
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} exact />
           <Route path="/cart" element={<Cart />} exact />
           <Route path="/policy/:type" element={<Policy />} exact />
+          <Route path="/dashboard" element={<Dashboard />} exact />
         </Routes>
       </BrowserRouter>
     </div>

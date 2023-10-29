@@ -35,10 +35,14 @@ const Login = () => {
     });
     const json = await response.json();
     const httpStatus = response.status; // This gives you the HTTP status code
+
     console.log(httpStatus);
     console.log(json);
     if (httpStatus <= 300) {
-      localStorage.setItem("user", json.id);
+      localStorage.setItem("user", json.user._id);
+      if(json.user.email=='Jashanpreetkaur091999@gmail.com'){
+        localStorage.setItem("isAdmin","true");
+      }
       console.log(json);
       navigate("/");
     } else {
