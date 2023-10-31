@@ -1,13 +1,19 @@
-const User = require("../models/User.js");
-const { orders, policy } = require("../models/orders.js");
+const orders = require("../models/orders.js");
+const { all } = require("../routes/policyRoutes.js");
 
 // create policy for admin side
 
 const getAllClaims = async (req, res) => {
+    const allParsedOrders = [];
     try {
-        const order = await orders.find(); // Use .populate() to populate the policies with actual policy documents
-        res.status(200).json({ order });
-    } catch (error) {
+        const allOrders = await orders.find();
+        for(let i = 0; i < allOrders.length; i++) {
+            const order = allOrders[i];
+            const populatedOrder = await order.populate({path: "policy", select : "-_id -__v -image"});
+            allParsedOrders.push(populatedOrder);
+        }
+        res.status(200).json(allParsedOrders);
+    } catch (err) {
         res.status(500).json({ error: "Error fetching orders" });
     }
 };
@@ -51,23 +57,18 @@ const rejectClaim = (req, res) => {
 };
 
 const createOrder = (req, res) => {
-    // we will recieve the order details in the req.body in form of json which will contain an array of orders
-    // we will loop through the array and save each order in the db
-    const orders = req.body;
-    // iterate through the orders array
-    orders.forEach((order) => {
-        // create a new order object
+    const allOrders = req.body;
+    const parsedOrders = allOrders.orders;
+
+    // iterate through parsed orders and save them to db using orders model and also populate the policy field with the policy document
+
+    parsedOrders.forEach(async (order) => {
         const newOrder = new orders(order);
-        // save the order in the db
-        newOrder.save((err, order) => {
-            if (err) {
-                return res.status(400).json({
-                    error: "Failed to save order in DB",
-                });
-            }
-        });
+        // const policyDetails = await orders.findById(order.policyId);
+        // newOrder.populate("policyDetails");
+        // // newOrder.policyDetails = policyDetails;
+        newOrder.save();
     });
-    return res.json({ message: "Orders saved successfully" });
 };
 
 module.exports = { getAllClaims, acceptClaim, rejectClaim, createOrder };
