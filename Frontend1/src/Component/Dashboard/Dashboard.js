@@ -19,7 +19,7 @@ const handlePoliyChange=(e)=>{
 
 const addPolicy=async(e)=>{
     e.preventDefault();
-
+console.log(formData)
     try{
         const respone=await fetch("http://localhost:4000/api/policy/policy/create",{
             method:"POST",

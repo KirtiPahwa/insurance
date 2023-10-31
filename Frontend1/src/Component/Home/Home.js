@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/style.css";
 import "../css/animate.css";
@@ -7,6 +7,21 @@ import mainPic from "../images/mainPic.jpg";
 import logoFooter from "../images/logo-footer.png";
 import Navbar from "../Navbar/Navbar";
 const Home = () => {
+    const [policies, setPolicies] = useState();
+    const fetchPolicies=async()=>{
+        try{
+        const response=await fetch("http://localhost:4000/api/policy/policy/all");
+        const json=await response.json();
+        console.log(json)
+        setPolicies(json);
+        }catch(err){
+            console.log(err);
+        }
+    }
+    useEffect(() => {
+      fetchPolicies();
+    }, [])
+    
     return (
         <>
             <div id="site-content">
