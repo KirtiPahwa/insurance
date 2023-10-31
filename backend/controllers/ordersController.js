@@ -7,9 +7,12 @@ const getAllClaims = async (req, res) => {
     const allParsedOrders = [];
     try {
         const allOrders = await orders.find();
-        for(let i = 0; i < allOrders.length; i++) {
+        for (let i = 0; i < allOrders.length; i++) {
             const order = allOrders[i];
-            const populatedOrder = await order.populate({path: "policy", select : "-_id -__v -image"});
+            const populatedOrder = await order.populate({
+                path: "policy",
+                select: "-_id -__v -image",
+            });
             allParsedOrders.push(populatedOrder);
         }
         res.status(200).json(allParsedOrders);
@@ -27,14 +30,7 @@ const acceptClaim = (req, res) => {
 
     policy.staus = "accepted";
 
-    policy.save((err, updatedPolicy) => {
-        if (err) {
-            return res.status(400).json({
-                error: "Failed to accept policy",
-            });
-        }
-        return res.json(updatedPolicy);
-    });
+    policy.save();
 };
 
 // reject a policy claim
@@ -45,15 +41,7 @@ const rejectClaim = (req, res) => {
     const policy = orders.findById(policyId);
 
     policy.staus = "rejected";
-
-    policy.save((err, updatedPolicy) => {
-        if (err) {
-            return res.status(400).json({
-                error: "Failed to reject policy",
-            });
-        }
-        return res.json(updatedPolicy);
-    });
+    policy.save();
 };
 
 const createOrder = (req, res) => {
