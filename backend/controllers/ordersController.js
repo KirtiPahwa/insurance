@@ -69,6 +69,7 @@ const createOrder = (req, res) => {
         // // newOrder.policyDetails = policyDetails;
         newOrder.save();
     });
+    res.status(200).json({ message: "Orders created" });
 };
 
 module.exports = { getAllClaims, acceptClaim, rejectClaim, createOrder };
