@@ -3,8 +3,25 @@ import { Link } from "react-router-dom";
 // import "./Cart.css";
 
 const Cart = () => {
-    const handleClaim = () => {
-        window.location.reload(false);
+    const handleClaim = async() => {
+        // window.location.reload(false);
+        const formData={
+            userId:localStorage.getItem("user"),
+            policy:{
+
+            }
+            
+        };
+            const response = await fetch("http://localhost:4000/api/orders/order/create", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
+            const json = await response.json();
+        console.log(json);
+           
         localStorage.setItem("Claimed", "true");
         localStorage.removeItem("health");
         localStorage.removeItem("home");

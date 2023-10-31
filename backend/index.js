@@ -1,19 +1,23 @@
-const connectToMongo = require("./db");
 const express = require("express");
-const cors = require("cors");
+const connectToMongo = require("./db");
 
-connectToMongo();
+const cors = require("cors");
 const app = express();
 const port = 4000;
 
-app.use(cors()); 
-app.use(express.json()); 
-
-app.get("/", (req,res) => {
-  res.send("Hello World");
-});
-app.use("/api/auth", require("./routes/auth"));
+connectToMongo();
 
 app.listen(port, () => {
-  console.log(`app listening on https://localhost/${port}`);
+    console.log(`app listening on https://localhost/${port}`);
 });
+
+app.use(cors());
+app.use(express.json());
+
+app.get("/", (req, res) => {
+    res.send("Hello World");
+});
+
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/policy", require("./routes/policyRoutes"));
+app.use("/api/orders", require("./routes/ordersRoutes"));
