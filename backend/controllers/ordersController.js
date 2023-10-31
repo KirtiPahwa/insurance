@@ -52,22 +52,22 @@ const rejectClaim = (req, res) => {
 }
 
 const createOrder = (req, res) => {
-    // we will recieve the order details in the req.body in form of json which will contain an array of orders
-    // we will loop through the array and save each order in the db
-    const orders = req.body;
-    // orders.forEach(order => {
-        // const newOrder = new Order(order);
-        orders.save((err, order) => {
-            if (err) {
-                return res.status(400).json({
-                    error: "Not able to save order in DB"
-                });
-            }
-        });
-    // });
-    return res.json({
-        message: "Order placed successfully"
-    });
+//     // we will recieve the order details in the req.body in form of json which will contain an array of orders
+//     // we will loop through the array and save each order in the db
+//     const orders = req.body;
+//     // orders.forEach(order => {
+//         // const newOrder = new Order(order);
+//         orders.save((err, order) => {
+//             if (err) {
+//                 return res.status(400).json({
+//                     error: "Not able to save order in DB"
+//                 });
+//             }
+//         });
+//     // });
+//     return res.json({
+//         message: "Order placed successfully"
+//     });
 }
 
 module.exports = { getAllClaims, acceptClaim, rejectClaim,createOrder };

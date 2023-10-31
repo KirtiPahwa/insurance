@@ -6,6 +6,35 @@ const Order=({item})=>{
     )
 }
 const Dashboard = () => {
+    const [formData, setFormData] = useState({
+        image:"",
+        policyName:"",
+        policyType:"",
+        policyDescription:""
+    })
+
+const handlePoliyChange=(e)=>{
+    setFormData({...formData,[e.target.name]:e.target.value})
+}
+
+const addPolicy=async(e)=>{
+    e.preventDefault();
+
+    try{
+        const respone=await fetch("http://localhost:4000/api/policy/policy/create",{
+            method:"POST",
+            headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+        
+        })
+        console.log(await respone.json());
+    }catch(err){
+console.log(err);
+    }
+}
+
 const [orders, setOrders] = useState({});
     const fetchOrders=async()=>{
         try{
@@ -45,6 +74,16 @@ const [orders, setOrders] = useState({});
     <h1>Dashboard</h1>
     <hr/>
     <h3>Add policy</h3>
+    <form>
+       Image: <input type='text' name='image' value={formData.image} onChange={handlePoliyChange}/>
+       <br/>
+       Policy Name: <input type="text" name='policyName'  value={formData.policyName} onChange={handlePoliyChange}/>
+       <br/>
+       Policy Type: <input type="text" name='policyType'  value={formData.policyType} onChange={handlePoliyChange}/>
+       <br/>
+       Policy Description: <input type="text" value={formData.policyDescription} name='policyDescription'  onChange={handlePoliyChange}/>
+   <button type='submit' onClick={addPolicy}>Add Policy</button>
+    </form>
     <hr/>
     <h3>Orders:</h3>
     {/* {orders.map((item) => (
