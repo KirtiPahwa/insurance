@@ -8,7 +8,7 @@ const port = 4000;
 connectToMongo();
 
 app.listen(port, () => {
-    console.log(`app listening on https://localhost/${port}`);
+    console.log(`app listening on https://localhost:${port}`);
 });
 
 app.use(cors());
