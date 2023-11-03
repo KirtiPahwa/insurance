@@ -36,9 +36,8 @@ const Cart = () => {
   }, [reload]);
 
   const handleClaim = async () => {
-    cart.map((e,i)=>{
-
-    })
+    console.log("cart is");
+    console.log(cart);
     const formData = {
       userId: localStorage.getItem("user"),
       policy: cart
