@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const policySchema = mongoose.Schema(
     {
-    
         image: {
             type: String,
             required: true

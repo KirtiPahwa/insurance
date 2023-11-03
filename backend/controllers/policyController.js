@@ -10,8 +10,7 @@ const createPolicy = async (req, res) => {
 const allPolicies = async (req, res) => {
     try {
         const policies = await policy.find();
-        console.log(policies);
-        res.status(200).json( policies );
+        res.status(200).json(policies);
     } catch (err) {
         res.status(500).json({ error: "Error fetching policies" });
     }
