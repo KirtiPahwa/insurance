@@ -46,16 +46,24 @@ const rejectClaim = (req, res) => {
 
 const createOrder = (req, res) => {
     const allOrders = req.body;
+    var user = req.body.userId;
+    if(user==null){
+        allOrders.userId = "nakli order id";
+    }
     const parsedOrders = allOrders.orders;
-
+    console.log(allOrders);
     // iterate through parsed orders and save them to db using orders model and also populate the policy field with the policy document
 
     parsedOrders.forEach(async (order) => {
-        const newOrder = new orders(order);
-        // const policyDetails = await orders.findById(order.policyId);
-        // newOrder.populate("policyDetails");
-        // // newOrder.policyDetails = policyDetails;
-        newOrder.save();
+        
+        const newOrder = {};
+        newOrder.userId = allOrders.userId;
+        newOrder.policy = order;
+        newOrder.policyStatus = "pending";
+
+        const singleOrder = new orders(newOrder);
+
+        singleOrder.save();
     });
     res.status(200).json({ message: "Orders created" });
 };

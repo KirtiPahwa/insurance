@@ -9,7 +9,7 @@ const orderSchema = mongoose.Schema({
     policy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "policy",
-        required: true,
+        required: false,
     },
     policyStatus: {
         type: String,
