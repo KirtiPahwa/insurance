@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import "./Cart.css";
 
 const Cart = () => {
+  
+
+    const [policies, setPolicies] = useState([]);
+    const [cart, setCart] = useState(null);
+
+    const fetchPolicies=async()=>{
+
+        try{
+        const response=await fetch("http://localhost:4000/api/policy/policy/all");
+        const json=await response.json();
+        setPolicies(json);
+
+        }catch(err){
+            console.log(err);
+        }
+    }
+    useEffect(() => {
+       console.log("ded")
+      fetchPolicies();
+      var cart=localStorage.getItem("cart");
+      if(cart){
+        JSON.parse(cart);
+      }
+      var res=policies.filter((e)=>{
+        console.log(e.policyType)
+        return cart.includes(e.policyType)==true;
+      });
+setCart(res);
+    },[])
+
     const handleClaim = async() => {
         // window.location.reload(false);
         const formData={
@@ -40,94 +69,34 @@ const Cart = () => {
                 >
                     Your cart
                 </h1>
-                {localStorage.getItem("home") != null ? (
-                    <div className="col-lg-12">
-                        <div
-                            className="feature wow fadeInUp"
-                            data-wow-delay=".4s"
-                        >
-                            <div className="feature-title">
-                                <i className="icon-bar-chart-up"></i>
-                                <h2 className="title">Home Services</h2>
-                                <small className="subtitle">
-                                    Nulla eros odio dolor
-                                </small>
+                {
+   (cart && cart.length!=0)?  cart.map((item,index)=>(
+    <div className="col-md-4" key={index}>
+    <div className="feature wow fadeInUp">
+        <div className="feature-title">
+            <i className="icon-customer-service"></i>
+            <h2 className="title">{item.policyName}
+            </h2>
+                                        <small className="subtitle">
+                                            Nulla eros odio dolor
+                                        </small>
+                                    </div>
+                                    <div className="feature-summary">
+                                        <p>
+                                            {item.policyDescription}
+                                        </p>
+                                    </div>
+                                    <Link
+                                        to={"/policy/"+item.policyType}
+                                        className="button"
+                                    >
+                                        More info
+                                    </Link>
+                                </div>
                             </div>
-                            <div className="feature-summary">
-                                <p>
-                                    Chocolate caramels unerdwear.com lemon
-                                    drops. Powder chupa chups pastry macaroon
-                                    wafer chocolate cake sweet roll croissant
-                                    jelly
-                                </p>
-                            </div>
-                            {/* <Link to="/policy/vehicle" className="button">
-                                    More info
-                                </Link> */}
-                        </div>
-                    </div>
-                ) : (
-                    <h2></h2>
-                )}
-
-                {localStorage.getItem("health") != null ? (
-                    <div className="col-lg-12">
-                        <div
-                            className="feature wow fadeInUp"
-                            data-wow-delay=".4s"
-                        >
-                            <div className="feature-title">
-                                <i className="icon-bar-chart-up"></i>
-                                <h2 className="title">Health Services</h2>
-                                <small className="subtitle">
-                                    Nulla eros odio dolor
-                                </small>
-                            </div>
-                            <div className="feature-summary">
-                                <p>
-                                    Chocolate caramels unerdwear.com lemon
-                                    drops. Powder chupa chups pastry macaroon
-                                    wafer chocolate cake sweet roll croissant
-                                    jelly
-                                </p>
-                            </div>
-                            {/* <Link to="/policy/vehicle" className="button">
-                                More info
-                            </Link> */}
-                        </div>
-                    </div>
-                ) : (
-                    <h2></h2>
-                )}
-                {localStorage.getItem("vehicle") != null ? (
-                    <div className="col-lg-12">
-                        <div
-                            className="feature wow fadeInUp"
-                            data-wow-delay=".4s"
-                        >
-                            <div className="feature-title">
-                                <i className="icon-bar-chart-up"></i>
-                                <h2 className="title">Vehicle Services</h2>
-                                <small className="subtitle">
-                                    Nulla eros odio dolor
-                                </small>
-                            </div>
-                            <div className="feature-summary">
-                                <p>
-                                    Chocolate caramels unerdwear.com lemon
-                                    drops. Powder chupa chups pastry macaroon
-                                    wafer chocolate cake sweet roll croissant
-                                    jelly
-                                </p>
-                            </div>
-                            {/* <Link to="/policy/vehicle" className="button">
-                                More info
-                            </Link> */}
-                        </div>
-                    </div>
-                ) : (
-                    <h2></h2>
-                )}
+    )):(<h1>Loading.....</h1>)
+    
+   }
 
                 <button type="submit" onClick={handleClaim}>
                     Claim

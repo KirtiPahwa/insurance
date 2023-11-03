@@ -7,13 +7,14 @@ import mainPic from "../images/mainPic.jpg";
 import logoFooter from "../images/logo-footer.png";
 import Navbar from "../Navbar/Navbar";
 const Home = () => {
-    const [policies, setPolicies] = useState();
+    const [policies, setPolicies] = useState([]);
     const fetchPolicies=async()=>{
+
         try{
         const response=await fetch("http://localhost:4000/api/policy/policy/all");
         const json=await response.json();
-        console.log(json)
         setPolicies(json);
+
         }catch(err){
             console.log(err);
         }
@@ -58,10 +59,66 @@ const Home = () => {
                             </Link>
                         </div>
                     </div>
-
                     <div className="fullwidth-block feature-section">
                         <div className="container">
                             <div className="row">
+{
+   (policies && policies.length!=0)?  policies.map((item,index)=>(
+    <div className="col-md-4" key={index}>
+    <div className="feature wow fadeInUp">
+        <div className="feature-title">
+            <i className="icon-customer-service"></i>
+            <h2 className="title">{item.policyName}
+            </h2>
+                                        <small className="subtitle">
+                                            Nulla eros odio dolor
+                                        </small>
+                                    </div>
+                                    <div className="feature-summary">
+                                        <p>
+                                            {item.policyDescription}
+                                        </p>
+                                    </div>
+                                    <Link
+                                        to={"/policy/"+item.policyType}
+                                        className="button"
+                                    >
+                                        More info
+                                    </Link>
+                                </div>
+                            </div>
+    )):(<h1>Loading.....</h1>)
+}
+
+
+                            {/* <div className="col-md-4">
+                                    <div className="feature wow fadeInUp">
+                                        <div className="feature-title">
+                                            <i className="icon-customer-service"></i>
+                                            <h2 className="title">
+                                                Health Service
+                                            </h2>
+                                            <small className="subtitle">
+                                                Nulla eros odio dolor
+                                            </small>
+                                        </div>
+                                        <div className="feature-summary">
+                                            <p>
+                                                Chocolate caramels unerdwear.com
+                                                lemon drops. Powder chupa chups
+                                                pastry macaroon wafer chocolate
+                                                cake sweet roll croissant jelly
+                                            </p>
+                                        </div>
+                                        <Link
+                                            to="/policy/health"
+                                            className="button"
+                                        >
+                                            More info
+                                        </Link>
+                                    </div>
+                                </div>
+
                                 <div className="col-md-4">
                                     <div className="feature wow fadeInUp">
                                         <div className="feature-title">
@@ -148,7 +205,7 @@ const Home = () => {
                                             More info
                                         </Link>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
